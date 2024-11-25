@@ -16,13 +16,13 @@ const testimonials = [
     name: "Prakriti Phuyal",
     title: "Graphic Designer at Baama Consultant",
     imgsrc: Img1, // Use the imported image directly
-    quote: "Working with Bigyan has been an absolute pleasure! His skills and professionalism is unmatched."
+    quote: "Bigyan exceeded all my expectations with his work. He delivered my website on time, with meticulous attention to detail, and the result was far beyond what I had envisioned. His expertise and professionalism truly shine through. I would highly recommend him to anyone looking for a skilled and reliable web developer!"
   },
   {
     name: "Saroj Budhathoki",
-    title: "Freelance Web Developer and Graphic Designer",
+    title: "Freelance Graphic Designer",
     imgsrc: Img2,
-    quote: "Working with Bigyan has been an absolute pleasure! His skills and professionalism is unmatched."
+    quote: "I couldn't be more impressed with Bigyan's work! Not only did he complete my project on time, but he also took the time to understand my vision and executed it perfectly. His communication was clear, and the final product was even better than I had hoped for. I will definitely be working with him again!"
   },
 ];
 
