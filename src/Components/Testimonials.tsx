@@ -3,6 +3,14 @@ import { Quote } from 'lucide-react';
 import Img1 from '../Images/pakiti.png';
 import Img2 from '../Images/sajo.jpg';
 
+
+interface Props{
+  name: string;
+  title: string;
+  quote: string;
+  imgsrc: string;
+}
+
 const testimonials = [
   {
     name: "Prakriti Phuyal",
@@ -18,7 +26,7 @@ const testimonials = [
   },
 ];
 
-const TestimonialCard = ({ name, title, quote, imgsrc }) => (
+const TestimonialCard:React.FC<Props> = ({ name, title, quote, imgsrc }) => (
   <div className="relative group">
     <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100" />
     
@@ -36,8 +44,7 @@ const TestimonialCard = ({ name, title, quote, imgsrc }) => (
             alt={name}
             className="w-20 h-20 rounded-full object-cover bg-zinc-800"
             onError={(e) => {
-              e.target.src = "/api/placeholder/80/80"; // Fallback if image fails to load
-              e.target.onerror = null; // Prevent infinite loop
+              console.log("Error", e)
             }}
           />
         </div>

@@ -2,11 +2,21 @@ import React, { useState, useRef, useEffect } from 'react';
 import ProjectCard from '../Elements/ProjectCard';
 import { Dot } from 'lucide-react';
 
-const Work = ({ projects }) => {
-  const [scrollY, setScrollY] = useState(0);
-  const [isWorkVisible, setIsWorkVisible] = useState(true);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const workSectionRef = useRef(null);
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  technologies: string[];
+}
+
+interface WorkProps {
+  projects: Project[];
+}
+
+const Work: React.FC<WorkProps> = ({ projects }) => {
+  const [scrollY, setScrollY] = useState<number>(0);
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
+  const workSectionRef = useRef<HTMLDivElement | null>(null);
 
   // Scroll to top on component mount
   useEffect(() => {
@@ -49,21 +59,19 @@ const Work = ({ projects }) => {
       {renderBackgroundDots()}
 
       {/* Fixed Background Title with initial animation */}
-      {isWorkVisible && (
-        <div className="fixed inset-0 left-96 flex items-center justify-center pointer-events-none">
-          <h1 
-            className={`text-zinc-600 text-[15vw] md:text-[12vw] select-none whitespace-nowrap opacity-20
-              ${isAnimating ? 'animate-sectionOut' : 'animate-sectionIn'}`}
-            style={{
-              transform: `translateY(${scrollY * 0.1}px)`,
-              willChange: 'transform'
-            }}
-            onAnimationEnd={() => setIsAnimating(false)}
-          >
-            Work
-          </h1>
-        </div>
-      )}
+      <div className="fixed inset-0 left-96 flex items-center justify-center pointer-events-none">
+        <h1
+          className={`text-zinc-600 text-[15vw] md:text-[12vw] select-none whitespace-nowrap opacity-20
+            ${isAnimating ? 'animate-sectionOut' : 'animate-sectionIn'}`}
+          style={{
+            transform: `translateY(${scrollY * 0.1}px)`,
+            willChange: 'transform',
+          }}
+          onAnimationEnd={() => setIsAnimating(false)}
+        >
+          Work
+        </h1>
+      </div>
 
       {/* Content Container */}
       <div className="relative">
@@ -76,15 +84,13 @@ const Work = ({ projects }) => {
         <div className="fixed right-8 top-0 w-px h-screen bg-gradient-to-b from-transparent via-zinc-700 to-transparent opacity-20"></div>
 
         {/* Projects Grid */}
-        <div 
+        <div
           ref={workSectionRef}
           className="relative z-0 w-11/12 md:w-9/12 max-w-6xl mx-auto px-4 sm:px-8 py-32"
         >
           {/* Section Info */}
           <div className="mb-16 will-change-transform animate-fadeInPermanent">
-            <p className="text-zinc-400 text-lg mb-4">
-              Browse through my selected projects
-            </p>
+            <p className="text-zinc-400 text-lg mb-4">Browse through my selected projects</p>
             <div className="flex items-center space-x-4 text-sm text-zinc-500">
               <span className="flex items-center">
                 <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
@@ -105,18 +111,17 @@ const Work = ({ projects }) => {
           <div className="grid grid-cols-1 gap-16">
             {projects.length > 0 ? (
               projects.map((project, index) => (
-                <div 
+                <div
                   key={project.id}
                   className="opacity-0 animate-fadeIn group"
                   style={{
                     animationDelay: `${index * 0.2}s`,
-                    animationFillMode: 'forwards'
+                    animationFillMode: 'forwards',
                   }}
                 >
                   <div className="relative">
                     <div className="absolute -left-8 top-0 h-full w-1 bg-gradient-to-b from-transparent via-zinc-700 to-transparent opacity-0 group-hover:opacity-20 transition-opacity"></div>
-                    <ProjectCard project={project} index={index} />
-                    
+                    <ProjectCard project={project} />
                   </div>
                 </div>
               ))
@@ -131,7 +136,7 @@ const Work = ({ projects }) => {
       </div>
 
       {/* Animations */}
-      <style jsx global>{`
+      <style>{`
         @keyframes sectionIn {
           0% {
             opacity: 0;

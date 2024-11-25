@@ -65,7 +65,7 @@ const Skills: React.FC = () => {
       </div>
 
       {/* Animations */}
-      <style jsx global>{`
+      <style>{`
         @keyframes backgroundIn {
           0% {
             opacity: 0;

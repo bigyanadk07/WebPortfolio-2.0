@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from "react-router-dom";
 
-const VerticalNav = () => {
+const VerticalNav:React.FC = () => {
   const location = useLocation();
   const [activeLink, setActiveLink] = useState('');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -98,7 +98,7 @@ const VerticalNav = () => {
       </div>
 
       {/* Styles */}
-      <style jsx global>{`
+      <style>{`
         .vertical-text {
           writing-mode: vertical-rl;
           text-orientation: mixed;

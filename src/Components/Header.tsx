@@ -27,7 +27,7 @@ const AbstractShape = () => (
   </svg>
 );
 
-const Header: React.FC = ({ logoText = "EC" }) => {
+const Header: React.FC = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-zinc-900/80 backdrop-blur-sm">
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 py-4">

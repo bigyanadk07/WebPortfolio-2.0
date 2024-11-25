@@ -2,9 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { BlogPost, blogPosts } from '../BlogData/Posts';
 
-const BlogPage = () => {
+const BlogPage:React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isBgVisible, setIsBgVisible] = useState(true);
   const [selectedBlog, setSelectedBlog] = useState<BlogPost | null>(null);
   const [startIndex, setStartIndex] = useState(0);
   const selectedBlogRef = useRef<HTMLDivElement>(null);
@@ -31,12 +30,11 @@ const BlogPage = () => {
     }
   };
 
-  const visiblePosts = blogPosts.slice(startIndex, startIndex + 5);
 
   return (
     <div className="min-h-screen bg-zinc-900 text-gray-200">
       {/* Background title */}
-      {isBgVisible && (
+      {(
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none">
           <h1 className="text-zinc-800 text-[15vw] md:text-[12vw]  select-none whitespace-nowrap animate-sectionIn">
             Blog
@@ -125,7 +123,7 @@ const BlogPage = () => {
       </main>
 
       {/* Animations */}
-      <style jsx global>{`
+      <style>{`
         @keyframes sectionIn {
           0% {
             opacity: 0;

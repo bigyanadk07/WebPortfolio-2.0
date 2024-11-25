@@ -2,7 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Mail, MapPin, Linkedin } from 'lucide-react';
 import ContactForm from '../Components/ContactForm';
 
-const Contact = ({ email,address }) => {
+interface Props{
+  email: string;
+  address: string;
+}
+
+const Contact:React.FC<Props> = ({ email,address }) => {
   const [isContactVisible, setIsContactVisible] = useState(true);
   const contactSectionRef = useRef(null);
 
@@ -98,7 +103,7 @@ const Contact = ({ email,address }) => {
         </div>
  
       {/* Animations */}
-      <style jsx global>{`
+      <style>{`
         @keyframes sectionIn {
           0% {
             opacity: 0;
