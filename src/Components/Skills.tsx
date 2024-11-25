@@ -42,7 +42,7 @@ const Skills: React.FC = () => {
       {/* Background Text */}
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none">
         <h1
-          className={`text-[8rem] sm:text-[12rem] md:text-[16rem] lg:text-[20rem] font-bold text-zinc-700/20 select-none
+          className={`text-[8rem] sm:text-[12rem] md:text-[16rem] lg:text-[20rem] font-bold text-zinc-700/20 select-none gasoek-one-regular
             ${isSkillsVisible ? 'animate-backgroundIn' : ''}`}
         >
           Skills
@@ -93,7 +93,7 @@ const SkillCard: React.FC<{ icon: React.ReactNode; label: string }> = ({ icon, l
     </div>
 
     {/* Skill Label */}
-    <p className="text-lg font-medium text-gray-200">{label}</p>
+    <p className="text-lg font-medium text-gray-200 ">{label}</p>
 
     {/* Border Animation */}
     <div className="absolute inset-0 rounded-lg transition-all duration-300 ease-in-out" />

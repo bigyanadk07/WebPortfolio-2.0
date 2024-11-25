@@ -61,7 +61,7 @@ const Work: React.FC<WorkProps> = ({ projects }) => {
       {/* Fixed Background Title with initial animation */}
       <div className="fixed inset-0 left-96 flex items-center justify-center pointer-events-none">
         <h1
-          className={`text-zinc-600 text-[15vw] md:text-[12vw] select-none whitespace-nowrap opacity-20
+          className={`text-zinc-600 text-[15vw] md:text-[12vw] select-none whitespace-nowrap opacity-20 gasoek-one-regular
             ${isAnimating ? 'animate-sectionOut' : 'animate-sectionIn'}`}
           style={{
             transform: `translateY(${scrollY * 0.1}px)`,

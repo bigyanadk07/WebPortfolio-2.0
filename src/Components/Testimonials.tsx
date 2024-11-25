@@ -80,10 +80,10 @@ const TestimonialComponent = () => {
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <h1 
           className={`text-5xl sm:text-[12rem] md:text-[14rem] lg:text-[16rem] font-bold text-zinc-800 select-none
-            transform transition-all duration-1000 ease-out
+            transform transition-all duration-1000 ease-out gasoek-one-regular
             ${isVisible 
               ? 'opacity-100 translate-y-0 blur-none' 
-              : 'opacity-0 translate-y-24 blur-sm'
+              : 'opacity-0 translate-y-24 blur-sm '
             }`}
         >
           Testimonials

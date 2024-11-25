@@ -62,7 +62,7 @@ const About: React.FC<Props> = ({ name, bio }) => {
   return (
     <div className="relative min-h-screen bg-zinc-900 text-white">
       {isAboutVisible && (
-        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none gasoek-one-regular" >
           <h1
             className={`text-zinc-800 text-[15vw] md:text-[12vw] select-none whitespace-nowrap
               hover:cursor-default hover:animate-textHover
@@ -80,7 +80,7 @@ const About: React.FC<Props> = ({ name, bio }) => {
           ${isAboutVisible ? 'opacity-100 transition-opacity duration-500' : 'opacity-0'}`}
       >
         <div className="overflow-hidden">
-          <h2 className="text-4xl sm:text-5xl md:text-7xl tracking-widest mb-8 animate-contentIn">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl tracking-widest mb-8 animate-contentIn font-bold gasoek-one-regular">
             {name}
           </h2>
         </div>

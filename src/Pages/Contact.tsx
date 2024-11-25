@@ -50,7 +50,7 @@ const Contact:React.FC<Props> = ({ email,address }) => {
       {isContactVisible && (
         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none">
           <h1
-            className={`text-zinc-800 text-[15vw] md:text-[12vw]  select-none whitespace-nowrap
+            className={`text-zinc-800 text-[15vw] md:text-[12vw]  select-none whitespace-nowrap gasoek-one-regular
               ${isContactVisible ? 'animate-sectionIn' : 'animate-sectionOut'}`}
           >
             Contact Me

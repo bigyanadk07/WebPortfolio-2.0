@@ -36,7 +36,7 @@ const BlogPage:React.FC = () => {
       {/* Background title */}
       {(
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none">
-          <h1 className="text-zinc-800 text-[15vw] md:text-[12vw]  select-none whitespace-nowrap animate-sectionIn">
+          <h1 className="text-zinc-800 text-[15vw] md:text-[12vw]  select-none whitespace-nowrap animate-sectionIn gasoek-one-regular">
             Blog
           </h1>
         </div>
