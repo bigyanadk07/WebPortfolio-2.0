@@ -14,6 +14,7 @@ interface Props {
 const About: React.FC<Props> = ({ name, bio }) => {
   const [currentSection, setCurrentSection] = useState('about');
   const [isAboutVisible, setIsAboutVisible] = useState(true);
+  const [downloadError, setDownloadError] = useState<string | null>(null);
   const aboutSectionRef = useRef(null);
 
   useEffect(() => {
@@ -21,12 +22,7 @@ const About: React.FC<Props> = ({ name, bio }) => {
       (entries) => {
         entries.forEach((entry) => {
           setIsAboutVisible(entry.isIntersecting);
-          // Update the currentSection when the section is in view
-          if (entry.isIntersecting) {
-            setCurrentSection('about');
-          } else {
-            setCurrentSection('work');
-          }
+          setCurrentSection(entry.isIntersecting ? 'about' : 'work');
         });
       },
       {
@@ -47,22 +43,48 @@ const About: React.FC<Props> = ({ name, bio }) => {
     };
   }, []);
 
-  const handleDownload = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
-    const link = document.createElement('a');
-    link.href = process.env.PUBLIC_URL
-      ? `${process.env.PUBLIC_URL}/cv.pdf`
-      : '/cv.pdf'; // Handle both dev and prod environments
-    link.download = 'Bigyan_Adhikari_CV.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleDownload = async () => {
+    try {
+      setDownloadError(null);
+      // Using Vite's environment variable syntax
+      const cvPath = import.meta.env.BASE_URL ? 
+        `${import.meta.env.BASE_URL}cv.pdf` : 
+        '/cv.pdf';
+
+      // First check if the file exists
+      const response = await fetch(cvPath);
+      if (!response.ok) {
+        throw new Error("CV file not found. Please make sure it's uploaded to the correct location.");
+      }
+
+      // Get the file as a blob
+      const blob = await response.blob();
+      
+      // Create a URL for the blob
+      const url = window.URL.createObjectURL(blob);
+      
+      // Create and click a temporary link
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'Bigyan_Adhikari_CV.pdf';
+      
+      // Append to document temporarily
+      document.body.appendChild(link);
+      link.click();
+      
+      // Clean up
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Download failed:', error);
+      setDownloadError(error instanceof Error ? error.message : 'Failed to download CV. Please try again later.');
+    }
   };
 
   return (
     <div className="relative min-h-screen bg-zinc-900 text-white">
       {isAboutVisible && (
-        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none gasoek-one-regular" >
+        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none gasoek-one-regular">
           <h1
             className={`text-zinc-800 text-[15vw] md:text-[12vw] select-none whitespace-nowrap
               hover:cursor-default hover:animate-textHover
@@ -79,6 +101,12 @@ const About: React.FC<Props> = ({ name, bio }) => {
         className={`relative z-10 w-full max-w-4xl mx-4 sm:ml-[10%] lg:ml-[15%] min-h-screen flex flex-col justify-center
           ${isAboutVisible ? 'opacity-100 transition-opacity duration-500' : 'opacity-0'}`}
       >
+        {downloadError && (
+          <div className="mb-4 p-4 bg-red-500/10 border border-red-500/20 rounded-md text-red-500">
+            {downloadError}
+          </div>
+        )}
+
         <div className="overflow-hidden">
           <h2 className="text-4xl sm:text-5xl md:text-7xl tracking-widest mb-8 animate-contentIn font-bold gasoek-one-regular">
             {name}
@@ -97,6 +125,8 @@ const About: React.FC<Props> = ({ name, bio }) => {
               href="http://www.linkedin.com/in/bigyanadhikari07"
               className="text-zinc-400 hover:text-white transition-colors p-2"
               aria-label="LinkedIn Profile"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <Linkedin size={24} />
             </a>
@@ -104,6 +134,8 @@ const About: React.FC<Props> = ({ name, bio }) => {
               href="https://github.com/bigyanadk07/"
               className="text-zinc-400 hover:text-white transition-colors p-2"
               aria-label="GitHub Profile"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <Github size={24} />
             </a>
@@ -128,7 +160,6 @@ const About: React.FC<Props> = ({ name, bio }) => {
         </div>
       </div>
 
-      {/* Moved CSS to <style> tag */}
       <style>
         {`
         @keyframes sectionIn {
@@ -149,8 +180,7 @@ const About: React.FC<Props> = ({ name, bio }) => {
         .animation-delay-200 { animation-delay: 200ms; }
         .animation-delay-400 { animation-delay: 400ms; }
         .animation-delay-600 { animation-delay: 600ms; }
-      `}
-
+        `}
       </style>
     </div>
   );
