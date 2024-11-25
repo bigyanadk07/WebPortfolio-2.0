@@ -108,6 +108,7 @@ const About: React.FC<Props> = ({ name, bio }) => {
         )}
 
         <div className="overflow-hidden">
+          
           <h2 className="text-4xl sm:text-5xl md:text-7xl tracking-widest mb-8 animate-contentIn font-bold gasoek-one-regular">
             {name}
           </h2>

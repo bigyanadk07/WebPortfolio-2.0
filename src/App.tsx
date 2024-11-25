@@ -57,6 +57,15 @@ const App: React.FC = () => {
       liveUrl: "https://bigyanadk07.netlify.app/",
       githubUrl: "https://github.com/bigyanadk07/WebPortfolio",
     },
+    {
+      id: 5,
+      title: "Web Portfolio(Client)",
+      description: "Designed and Curated a personal web portfolio for a client and hosted live on Netlify.",
+      image: "/path/to/Project2.jpg",
+      technologies: ["ReactJS", "TailwindCSS"],
+      liveUrl: "https://prakritiphuyal.netlify.app/",
+      githubUrl: "https://github.com/bigyanadk07/PrakritiPortfolio",
+    },
   ];
 
   return (
