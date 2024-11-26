@@ -25,7 +25,6 @@ const NineByNineGrid: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // Create IntersectionObserver to detect when the Grid section comes into view
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -33,7 +32,7 @@ const NineByNineGrid: React.FC = () => {
         });
       },
       {
-        threshold: 0.1, // Trigger when 10% of the section is in view
+        threshold: 0.1,
       }
     );
 
@@ -51,13 +50,21 @@ const NineByNineGrid: React.FC = () => {
   return (
     <div 
       ref={gridSectionRef}
-      className="relative w-full px-60 pt-96 bg-zinc-900 min-h-screen overflow-hidden"
+      className="
+        relative w-full 
+        px-4 sm:px-10 md:px-20 lg:px-60 
+        pt-24 sm:pt-48 md:pt-72 lg:pt-96 
+        bg-zinc-900 
+        min-h-screen 
+        overflow-hidden
+      "
     >
       {/* Background Text Animation at the Top */}
       <div className="absolute top-0 left-0 right-0 pointer-events-none">
         <div className={`
           text-center w-full
-          text-[15vw] text-white text-opacity-90
+          text-[25vw] sm:text-[20vw] md:text-[15vw] lg:text-[15vw] 
+          text-white text-opacity-90
           whitespace-nowrap
           ${isGridVisible ? 'animate-backgroundIn' : ''}
           overflow-hidden gasoek-one-regular
@@ -66,7 +73,15 @@ const NineByNineGrid: React.FC = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-4 rounded-xl overflow-hidden relative z-10">
+      <div className="
+        grid 
+        grid-cols-2 sm:grid-cols-3 
+        gap-2 sm:gap-4 
+        rounded-xl 
+        overflow-hidden 
+        relative 
+        z-10
+      ">
         {[...Array(images.length)].map((_, index) => {
           const imageIndex = index % 9;
           const image = images[imageIndex];
@@ -80,7 +95,7 @@ const NineByNineGrid: React.FC = () => {
                 ${hoveredIndex !== null && hoveredIndex !== index 
                   ? 'opacity-50 scale-95' 
                   : 'opacity-100 scale-100'}
-                hover:scale-100 hover:z-10
+                hover:scale-105 hover:z-10
                 rounded-lg overflow-hidden
                 relative group
                 ${isGridVisible ? 'animate-gridItemIn' : 'opacity-0'}
@@ -96,14 +111,14 @@ const NineByNineGrid: React.FC = () => {
                   src={image} 
                   alt={`Grid item ${index + 1}`} 
                   className="
-                    w-full h-full object-contain p-4 
+                    w-full h-full object-contain p-2 sm:p-4 
                     transition-transform duration-300 ease-in-out
                     group-hover:scale-110
                   "
                 />
               )}
               <div className="
-                absolute inset-0  bg-opacity-0 
+                absolute inset-0 bg-opacity-0 
                 group-hover:bg-opacity-20 
                 transition-all duration-300 
                 flex items-center justify-center
@@ -111,7 +126,7 @@ const NineByNineGrid: React.FC = () => {
                 <span className="
                   text-white text-opacity-0 
                   group-hover:text-opacity-100 
-                  text-xl font-bold 
+                  text-lg sm:text-xl font-bold 
                   transition-all duration-300
                 ">
                   {index + 1}
