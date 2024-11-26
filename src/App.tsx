@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Contact from './Pages/Contact';
 import Blog from './Pages/Blog';
 import Footer from './Components/Footer';
+import Designs from './Pages/Designs';
 
 interface Project {
   id: number;
@@ -86,6 +87,7 @@ const App: React.FC = () => {
             }
           />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/designs" element={<Designs />} />
         </Routes>
         <Footer />
       </Router>

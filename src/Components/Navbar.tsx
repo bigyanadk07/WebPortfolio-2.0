@@ -12,6 +12,7 @@ const VerticalNav:React.FC = () => {
     { id: 'work', label: 'Work', to: '/work' },
     { id: 'contact', label: 'Contact', to: '/contact' },
     { id: 'blog', label: 'Blog', to: '/blog' },
+    { id: 'designs', label: 'Designs', to: '/designs' },
   ];
 
   // Update active link based on current path
