@@ -60,12 +60,21 @@ const App: React.FC = () => {
     },
     {
       id: 5,
-      title: "Web Portfolio(Client)",
+      title: "Web Portfolio(Client 1)",
       description: "Designed and Curated a personal web portfolio for a client and hosted live on Netlify.",
       image: "/path/to/Project2.jpg",
       technologies: ["ReactJS", "TailwindCSS"],
       liveUrl: "https://prakritiphuyal.netlify.app/",
       githubUrl: "https://github.com/bigyanadk07/PrakritiPortfolio",
+    },
+    {
+      id: 5,
+      title: "Web Portfolio(Client 2)",
+      description: "Developed a personal web portfolio and deployed it in Netlify.",
+      image: "/path/to/Project2.jpg",
+      technologies: ["ReactJS", "TailwindCSS"],
+      liveUrl: "https://sarojbudhathoki.netlify.app/",
+      githubUrl: "https://github.com/bigyanadk07/SarojPortfolio",
     },
   ];
 
