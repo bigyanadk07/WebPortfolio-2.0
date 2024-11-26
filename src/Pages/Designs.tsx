@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react';
 import Image1 from '../Images/GraphicImages/Boba-Coffee.png';
 import Image2 from '../Images/GraphicImages/Brew & Beans.png';
 import Image3 from '../Images/GraphicImages/Food4you.png';
@@ -15,8 +15,8 @@ const NineByNineGrid: React.FC = () => {
   const gridSectionRef = useRef(null);
 
   const images = [
-    Image1, Image2, Image3, 
-    Image4, Image5, Image9, 
+    Image1, Image4, Image3, 
+    Image2, Image5, Image9, 
     Image7, Image8, Image6
   ];
 
@@ -99,9 +99,11 @@ const NineByNineGrid: React.FC = () => {
                 rounded-lg overflow-hidden
                 relative group
                 ${isGridVisible ? 'animate-gridItemIn' : 'opacity-0'}
+                perspective-1000 preserve-3d
               `}
               style={{
-                animationDelay: isGridVisible ? `${index * 100}ms` : '0ms'
+                animationDelay: isGridVisible ? `${index * 150}ms` : '0ms',
+                transformStyle: 'preserve-3d'
               }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
@@ -112,9 +114,25 @@ const NineByNineGrid: React.FC = () => {
                   alt={`Grid item ${index + 1}`} 
                   className="
                     w-full h-full object-contain p-2 sm:p-4 
-                    transition-transform duration-300 ease-in-out
+                    transition-all duration-300 ease-in-out
                     group-hover:scale-110
+                    image-item
+                    transform-gpu
+                    backface-hidden
                   "
+                  loading="lazy"
+                  style={{
+                    transformOrigin: 'center center',
+                    transform: 'rotateY(90deg) scale(0.8)',
+                    opacity: 0
+                  }}
+                  onLoad={(e) => {
+                    const img = e.currentTarget;
+                    setTimeout(() => {
+                      img.style.transform = 'rotateY(0) scale(1)';
+                      img.style.opacity = '1';
+                    }, 100 * index);
+                  }}
                 />
               )}
               <div className="
@@ -133,7 +151,7 @@ const NineByNineGrid: React.FC = () => {
                 </span>
               </div>
             </div>
-          )
+          );
         })}
       </div>
 
@@ -153,11 +171,22 @@ const NineByNineGrid: React.FC = () => {
         @keyframes gridItemIn {
           0% {
             opacity: 0;
-            transform: scale(0.8);
+            transform: scale(0.8) rotateX(-20deg);
           }
           100% {
             opacity: 1;
-            transform: scale(1);
+            transform: scale(1) rotateX(0);
+          }
+        }
+
+        @keyframes imageReveal {
+          0% {
+            transform: rotateY(90deg) scale(0.8);
+            opacity: 0;
+          }
+          100% {
+            transform: rotateY(0) scale(1);
+            opacity: 1;
           }
         }
 
@@ -168,9 +197,13 @@ const NineByNineGrid: React.FC = () => {
         .animate-gridItemIn {
           animation: gridItemIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
         }
+
+        .image-item {
+          animation: imageReveal 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
       `}</style>
     </div>
-  )
-}
+  );
+};
 
-export default NineByNineGrid
+export default NineByNineGrid;
