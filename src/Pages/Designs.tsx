@@ -1,24 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Image1 from '../Images/GraphicImages/Boba-Coffee.png';
-import Image2 from '../Images/GraphicImages/Brew & Beans.png';
-import Image3 from '../Images/GraphicImages/Food4you.png';
-import Image4 from '../Images/GraphicImages/Konasku-Cafe.png';
-import Image5 from '../Images/GraphicImages/Krita-Food-Land.png';
-import Image6 from '../Images/GraphicImages/Mimi-Restro.png';
-import Image7 from '../Images/GraphicImages/Restaurant-menu.png';
-import Image8 from '../Images/GraphicImages/Triveni-Food-Land.png';
-import Image9 from '../Images/GraphicImages/Waffle-house.png';
+import Preview from "../Images/portfolio-preview.png"
 
-const NineByNineGrid: React.FC = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+const BrowserMockup: React.FC = () => {
   const [isGridVisible, setIsGridVisible] = useState(false);
   const gridSectionRef = useRef(null);
 
-  const images = [
-    Image1, Image4, Image3, 
-    Image2, Image5, Image9, 
-    Image7, Image8, Image6
-  ];
+  const websitePreviewImage = Preview;
+  const websiteUrl = 'https://design-bigyanadhikari.netlify.app/';
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -47,6 +35,10 @@ const NineByNineGrid: React.FC = () => {
     };
   }, []);
 
+  const handleBrowserClick = () => {
+    window.open(websiteUrl, '_blank');
+  };
+
   return (
     <div 
       ref={gridSectionRef}
@@ -57,6 +49,7 @@ const NineByNineGrid: React.FC = () => {
         bg-zinc-900 
         min-h-screen 
         overflow-hidden
+        flex flex-col items-center justify-center
       "
     >
       {/* Background Text Animation at the Top */}
@@ -73,86 +66,134 @@ const NineByNineGrid: React.FC = () => {
         </div>
       </div>
 
-      <div className="
-        grid 
-        grid-cols-2 sm:grid-cols-3 
-        gap-2 sm:gap-4 
-        rounded-xl 
-        overflow-hidden 
-        relative 
-        z-10
-      ">
-        {[...Array(images.length)].map((_, index) => {
-          const imageIndex = index % 9;
-          const image = images[imageIndex];
+      {/* Moved Designs Explanation */}
+      <div className={`
+        text-center 
+        max-w-2xl 
+        mx-auto 
+        mb-8 
+        px-4
+        ${isGridVisible ? 'animate-gridItemIn' : 'opacity-0'}
+      `}>
+        <h2 className="
+          text-2xl 
+          sm:text-3xl 
+          text-white 
+          font-bold 
+          mb-4
+        ">
+          Designs Have Been Moved!!!
+        </h2>
+        <p className="
+          text-zinc-300 
+          text-base 
+          sm:text-lg 
+          leading-relaxed
+        ">
+          To provide a better browsing experience, my design portfolio has been relocated to a dedicated website. Click the preview below to explore the full collection of my latest designs and creative works.
+        </p>
+      </div>
 
-          return (
-            <div 
-              key={index} 
-              className={`
-                aspect-square flex items-center justify-center 
-                transition-all duration-300 ease-in-out
-                ${hoveredIndex !== null && hoveredIndex !== index 
-                  ? 'opacity-50 scale-95' 
-                  : 'opacity-100 scale-100'}
-                hover:scale-105 hover:z-10
-                rounded-lg overflow-hidden
-                relative group
-                ${isGridVisible ? 'animate-gridItemIn' : 'opacity-0'}
-                perspective-1000 preserve-3d
-              `}
-              style={{
-                animationDelay: isGridVisible ? `${index * 150}ms` : '0ms',
-                transformStyle: 'preserve-3d'
-              }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              {image && (
-                <img 
-                  src={image} 
-                  alt={`Grid item ${index + 1}`} 
-                  className="
-                    w-full h-full object-contain p-2 sm:p-4 
-                    transition-all duration-300 ease-in-out
-                    group-hover:scale-110
-                    image-item
-                    transform-gpu
-                    backface-hidden
-                  "
-                  loading="lazy"
-                  style={{
-                    transformOrigin: 'center center',
-                    transform: 'rotateY(90deg) scale(0.8)',
-                    opacity: 0
-                  }}
-                  onLoad={(e) => {
-                    const img = e.currentTarget;
-                    setTimeout(() => {
-                      img.style.transform = 'rotateY(0) scale(1)';
-                      img.style.opacity = '1';
-                    }, 100 * index);
-                  }}
-                />
-              )}
+      <div className="
+        relative z-10 
+        w-full 
+        max-w-4xl 
+        transform 
+        transition-all 
+        duration-500
+        hover:scale-[1.02]
+        ${isGridVisible ? 'animate-gridItemIn' : 'opacity-0'}
+      ">
+        {/* Rest of the component remains the same as in the original code */}
+        {/* Browser Mockup */}
+        <div 
+          className="
+            bg-zinc-800 
+            rounded-xl 
+            overflow-hidden 
+            shadow-2xl 
+            cursor-pointer 
+            transition 
+            duration-300 
+            hover:shadow-3xl
+            border-4 
+            border-zinc-700
+          "
+          onClick={handleBrowserClick}
+        >
+          {/* Browser Top Bar */}
+          <div className="
+            bg-zinc-700 
+            h-10 
+            flex 
+            items-center 
+            px-4 
+            justify-between
+          ">
+            <div className="flex space-x-2">
+              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            </div>
+            <div className="
+              bg-zinc-600 
+              text-zinc-300 
+              px-4 
+              py-1 
+              rounded 
+              text-sm 
+              max-w-md 
+              truncate 
+              w-full 
+              text-center
+            ">
+              {websiteUrl}
+            </div>
+            <div className="w-12"></div>
+          </div>
+
+          {/* Website Preview */}
+          <div className="relative overflow-hidden">
+            <img 
+              src={websitePreviewImage} 
+              alt="Design Portfolio Preview"
+              className="
+                w-full 
+                h-auto 
+                object-cover 
+                transition 
+                duration-300 
+                transform 
+                hover:scale-105
+              "
+              loading="lazy"
+            />
+            <div className="
+              absolute 
+              inset-0 
+              bg-black 
+              bg-opacity-0 
+              hover:bg-opacity-10 
+              transition 
+              duration-300 
+              flex 
+              items-center 
+              justify-center
+            ">
               <div className="
-                absolute inset-0 bg-opacity-0 
-                group-hover:bg-opacity-20 
-                transition-all duration-300 
-                flex items-center justify-center
+                text-white 
+                text-opacity-0 
+                hover:text-opacity-100 
+                text-2xl 
+                font-bold 
+                transition 
+                duration-300
               ">
-                <span className="
-                  text-white text-opacity-0 
-                  group-hover:text-opacity-100 
-                  text-lg sm:text-xl font-bold 
-                  transition-all duration-300
-                ">
-                  {index + 1}
-                </span>
+                Click to Open
               </div>
             </div>
-          );
-        })}
+          </div>
+        </div>
       </div>
 
       {/* Custom Animations */}
@@ -179,17 +220,6 @@ const NineByNineGrid: React.FC = () => {
           }
         }
 
-        @keyframes imageReveal {
-          0% {
-            transform: rotateY(90deg) scale(0.8);
-            opacity: 0;
-          }
-          100% {
-            transform: rotateY(0) scale(1);
-            opacity: 1;
-          }
-        }
-
         .animate-backgroundIn {
           animation: backgroundIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
         }
@@ -197,13 +227,9 @@ const NineByNineGrid: React.FC = () => {
         .animate-gridItemIn {
           animation: gridItemIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
         }
-
-        .image-item {
-          animation: imageReveal 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
       `}</style>
     </div>
   );
 };
 
-export default NineByNineGrid;
+export default BrowserMockup;
