@@ -3,6 +3,7 @@
 import Blog1 from './BlogImages/post1.jpg';
 import Blog2 from './BlogImages/post2.jpeg';
 import Blog3 from './BlogImages/post3.png';
+import Blog4 from './BlogImages/post4.png';
 
 export interface BlogPost {
     id: number;
@@ -100,6 +101,36 @@ export interface BlogPost {
   - Enhanced customization options
   - Integration with OS-level preferences
   - Impact on brand guidelines and design systems`
-    }
+    },
+    {
+      id: 4,
+      date: "December 1, 2024",
+      title: "Fugatto: Revolutionizing Audio Creation",
+      description: "Fugatto: The AI Swiss Army Knife for SoundHow Fugatto is transforming sound design with AI, enabling users to create and modify audio like never before.",
+      imageUrl: Blog4,
+      content: "Fugatto, a generative AI model, offers unparalleled versatility in sound creation and transformation. From music production to gaming, it redefines audio innovation.",
+      longDescription: `Fugatto is revolutionizing how we create and interact with sound. This cutting-edge AI model enables users to craft and transform audio with unprecedented ease and creativity. Here's why Fugatto is a game-changer:
+
+      Unmatched Versatility:
+      
+      Generates music, voices, and soundscapes from text prompts.
+      Transforms existing audio, adding or removing elements like instruments or effects.
+      Innovative Capabilities:
+      
+      Combines prompts for layered outputs (e.g., a voice with a French accent expressing sadness).
+      Generates evolving soundscapes, such as rain transitioning to birdsong at dawn.
+      Creates unique, unheard-of sounds—like a trumpet barking or a saxophone meowing.
+      Wide-Ranging Applications:
+      
+      Music Production: Prototype songs, adjust styles, and enhance audio.
+      Advertising: Adapt voiceovers with different accents and tones.
+      Gaming: Dynamically adjust or create sound assets to match in-game action.
+      Education: Personalize learning tools with custom voices.
+      Empowering Creativity:
+      
+      Gives users fine-grained artistic control over sound design.
+      Inspires new approaches to audio innovation across industries.
+      With Fugatto, the possibilities for sound design are as limitless as your imagination!`
+    },
     // Add more blog posts as needed
   ];
