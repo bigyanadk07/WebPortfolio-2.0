@@ -55,7 +55,7 @@ const App: React.FC = () => {
       description: "Personal portfolio website showcasing projects and skills.",
       image: "/path/to/Project2.jpg",
       technologies: ["ReactJS", "TailwindCSS"],
-      liveUrl: "https://bigyanadk07.netlify.app/",
+      liveUrl: "https://bigyanadhikari.netlify.app/",
       githubUrl: "https://github.com/bigyanadk07/WebPortfolio",
     },
     {
@@ -69,14 +69,33 @@ const App: React.FC = () => {
     },
     {
       id: 5,
-      title: "Web Portfolio(Client 2)",
-      description: "Developed a personal web portfolio and deployed it in Netlify.",
+      title: "आंगन Nepal",
+      description: "Developed a Frontend for Nepali RealEstate and deployed it in Netlify.",
       image: "/path/to/Project2.jpg",
       technologies: ["ReactJS", "TailwindCSS"],
-      liveUrl: "https://sarojbudhathoki.netlify.app/",
-      githubUrl: "https://github.com/bigyanadk07/SarojPortfolio",
+      liveUrl: "https://aangannepal.netlify.app/",
+      githubUrl: "https://github.com/bigyanadk07/Aangan-Nepal",
+    },
+    {
+      id: 6,
+      title: "कोठा Design Studio",
+      description: "Developed a Frontend for nepali culture and theme based interior design organisation and deployed it in Netlify.",
+      image: "/path/to/Project2.jpg",
+      technologies: ["ReactJS", "TailwindCSS"],
+      liveUrl: "https://kothadesignstudio.netlify.app/",
+      githubUrl: "https://github.com/bigyanadk07/Kotha-Design-Studio",
+    },
+    {
+      id: 7,
+      title: "Grow Green",
+      description: "Developed a Frontend for an online plant shop and deployed it in Netlify.",
+      image: "/path/to/Project2.jpg",
+      technologies: ["ReactJS", "TailwindCSS"],
+      liveUrl: "https://growgreenn.netlify.app/",
+      githubUrl: "https://github.com/bigyanadk07/GrowGreen",
     },
   ];
+  
 
   return (
     <div className="ubuntu-regular">
