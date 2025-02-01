@@ -21,7 +21,7 @@ const experiences: ExperienceProps[] = [
   },
 ];
 
-const ExperienceCard: React.FC<ExperienceProps> = ({ role, company, companyLogo, duration, description }) => (
+const ExperienceCard: React.FC<ExperienceProps> = ({ role, company, duration, description }) => (
   <div className="relative group">
     <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100" />
     
