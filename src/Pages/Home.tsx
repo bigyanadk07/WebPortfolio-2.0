@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import About from '../Components/About';
 import Skills from '../Components/Skills';
-import TestimonialComponent from '../Components/Testimonials';
+// import TestimonialComponent from '../Components/Testimonials';
+import ExperienceComponent from '../Components/Experience';
 
 interface Links {
   linkedin: string;
@@ -18,7 +19,7 @@ const Home: React.FC = () => {
   const links: Links = {
     linkedin: "https://linkedin.com/in/BigyanAdhikari",
     github: "https://github.com/BigyanAdhikari",
-    email: "bigyan.adhikari@example.com",
+    email: "bigyanadk07@gmail.com",
   };
 
   return (
@@ -29,7 +30,7 @@ const Home: React.FC = () => {
         links={links}
       />
       <Skills />
-      <TestimonialComponent />
+      <ExperienceComponent />
     </div>
   );
 };
