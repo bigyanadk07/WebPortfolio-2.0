@@ -24,3 +24,9 @@
     font-weight: 400;
     font-style: normal;
   }
+
+  /* Apply pointer cursor to the body */
+body {
+  cursor: url('src/assets/amogus.cur') 16 16, auto;
+}
+
